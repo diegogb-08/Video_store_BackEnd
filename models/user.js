@@ -57,7 +57,7 @@ const userSchema = new Schema({
     },
     paymentMethod: {
         type: Number, 
-        enum: [Visa, MasterCard, Paypal, Bizum, Amex],
+        enum: [visa, masterCard, paypal, bizum, amex, cash, bankTransfer],
         required: true
     }
 });
