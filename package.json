@@ -1,0 +1,27 @@
+{
+  "name": "video_store_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegogb-08/Video_store_BackEnd.git"
+  },
+  "author": "Diego Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegogb-08/Video_store_BackEnd/issues"
+  },
+  "homepage": "https://github.com/diegogb-08/Video_store_BackEnd#readme"
+}
