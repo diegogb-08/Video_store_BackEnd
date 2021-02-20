@@ -5,7 +5,6 @@ const ObjectId = mongoose.Types.ObjectId;
 const movieSchema = new Schema({
     id: { 
         type: ObjectId,
-        required: true
     },
     title: { 
         type: String,
