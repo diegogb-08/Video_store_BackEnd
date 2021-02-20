@@ -10,7 +10,13 @@ router.get('/', (req, res) => {
 });
 
 
-
+app.use(express.json())
 app.use(router);
 
-app.listen(port, () => console.log(`Node server running on http://localhost:${port}`))
+mongoose.connect('mongodb://localhost/film', { useNewUrlparser: true, useUnifiedTopology: true}, (err, res) => {
+    if(err) {
+        console.log('ERROR: connecting to Database. ' + err)
+    }
+    app.listen(port, () => console.log(`Node server running on http://localhost:${port}`));
+})
+
