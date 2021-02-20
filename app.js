@@ -18,5 +18,5 @@ mongoose.connect('mongodb://localhost/film', { useNewUrlparser: true, useUnified
         console.log('ERROR: connecting to Database. ' + err)
     }
     app.listen(port, () => console.log(`Node server running on http://localhost:${port}`));
-})
+});
 

@@ -2,11 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const filmSchema = new Schema({
-    title: { type: String },
-    year: { type: Number },
-    country: { type: String },
-    poster: { type: String },
-    genre: { type: String, enum:
+    id: { 
+        type: ObjectId 
+    },
+    title: { 
+        type: String,
+        required: true,
+        deafault: 'film'
+    },
+    creationDate: {
+        type: Date,
+        default: new Date
+    },
+    year: { 
+        type: Number 
+    },
+    country: { 
+        type: String 
+    },
+    poster: { 
+        type: String 
+    },
+    genre: { 
+        type: String, 
+        enum:
         {
             "Action": 28,
             "Adventure": 12,
@@ -28,7 +47,14 @@ const filmSchema = new Schema({
             "Western": 37
         }
     },
-    description: { type: String }
+    description: { 
+        type: String 
+    },
+    adult: { 
+        type: Boolean,
+        default: false
+    }
 })
 
-module.exports = mongoose.model('film', filmSchema)
+const movie = mongoose.model('film', filmSchema);
+module.exports = movie;
