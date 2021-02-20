@@ -50,7 +50,7 @@ class Film {
 
         film.save((err, film) => {
             if(err) return res.status(500).send( err.message);
-        res.status(200).jsonp(film);
+        res.status(200).json(film);
         })
     };
 
@@ -69,7 +69,7 @@ class Film {
 
             film.save((err) => {
                 if(err) return res.status(500).send(err.message);
-                res.status(200).jsonp(film)
+                res.status(200).json(film)
             })
         });
     };
@@ -84,6 +84,8 @@ class Film {
             });
         });
     };
+
+
 };
 
 let movieController = new Film();
