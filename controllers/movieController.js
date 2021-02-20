@@ -10,13 +10,8 @@ class Film {
 
     //GET - Return all Films in the DB
 
-    async findAllFilms(req,res){
-        movie.find((err, filmCollection) => {
-        if(err) res.send(500, err.message);
-
-            console.log('GET / allFilms')
-            res.status(200).jsonp(filmCollection);
-        });
+    async findAllFilms(filmCollection){
+        return movie.find(filmCollection);
     };
 
     //GET - Return a Film with specified ID
@@ -28,30 +23,12 @@ class Film {
             console.log('GET /film/' + req.params.id);
             res.status(200).jsonp(film);
         });
-    }
+    };
 
     //POST - Insert a new Film in the DB
 
-    async addFilm(req, res){
-        console.log('POST');
-        console.log(req.body);
-
-        const film = new movie ({
-            id: req.body.id,
-            title: req.body.title,
-            creationDate: req.body.creationDate,
-            year: req.body.year,
-            country: req.body.country,
-            poster: req.body.poster,
-            genre: req.body.genre,
-            description: req.body.description,
-            adult: req.body.adult
-        });
-
-        film.save((err, film) => {
-            if(err) return res.status(500).send( err.message);
-        res.status(200).json(film);
-        })
+    async addFilm(film){
+       return movie.create(film)
     };
 
     //PUT - Update a register already exists
