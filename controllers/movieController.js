@@ -35,8 +35,8 @@ class Film {
 
     //DELETE - Delete a Film with specified ID
 
-    async deleteFilm({id: id}) {
-        const idFound = movie.findOne({id: id})
+    async deleteFilm(id) {
+        const idFound = movie.findOne(id)
         return idFound.remove()
     };
 };

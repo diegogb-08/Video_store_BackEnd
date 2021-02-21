@@ -3,20 +3,19 @@ const movieController = require('../controllers/movieController')
 const movieSchema = require('../models/movie')
 
 // API routes
-routerFilms.get('/movies', async (req, res) => {
+routerFilms.get('/allmovies', async (req, res) => {
     try {
         res.json(await movieController.findAllFilms())
     }catch (err) {
         return res.sendStatus(500).json({
            message: 'Internal Server Error'
         });
-        console.log(err.message)
     }
 });
 
-routerFilms.get('/movie:id',async (req, res) => {
+routerFilms.get('/movie/:id',async (req, res) => {
     try {
-        res.json(await movieController.findOne(req))
+        res.json(await movieController.findById(req))
     }catch (err) {
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
@@ -24,7 +23,7 @@ routerFilms.get('/movie:id',async (req, res) => {
     }
 });
 
-routerFilms.post('/add-movie',async (req, res) => {
+routerFilms.post('/addmovie',async (req, res) => {
     try{
         const id = await movieController.addFilm(new movieSchema(req.body));
         const status = 'success';
