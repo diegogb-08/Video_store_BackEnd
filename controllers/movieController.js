@@ -28,15 +28,14 @@ class Film {
 
     //PUT - Update a Film already exists
 
-    async updateFilm(id, film){
-        const idFound = movie.findOne({id: id})
-        return idFound.update(film)
+    async updateFilm({id: id}){
+        return movie.findOneAndUpdate({id: id})
     };
 
     //DELETE - Delete a Film with specified ID
 
-    async deleteFilm(id) {
-        const idFound = movie.findOne(id)
+    async deleteFilm({id: id}) {
+        const idFound = movie.findOneAndDelete({id: id})
         return idFound.remove()
     };
 };

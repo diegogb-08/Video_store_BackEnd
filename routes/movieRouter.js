@@ -35,10 +35,10 @@ routerFilms.post('/addmovie',async (req, res) => {
     }
 })
 
-routerFilms.put('/update-movie:id',async (req,res) => {
+routerFilms.put('/update-movie/:id', async (req,res) => {
     try{
         const id = req.params.id;
-        res.json(await movieController.updateFilm(id,new movieSchema(req.body)));
+        res.json(await movieController.updateFilm(id,new movieSchema(req.body.id)));
     } catch( error ){
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
@@ -57,7 +57,6 @@ routerFilms.delete('/remove-movie/:id', async (req, res) => {
             message: 'Internal Server Error'
      });   
     }
- 
- });
+});
 
 module.exports = routerFilms;

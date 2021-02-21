@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
 const movieSchema = new Schema({
-    id: { 
-        type: ObjectId,
-    },
     title: { 
         type: String,
         required: true,
         deafault: 'film'
+    },
+    id: { 
+        type: ObjectId,
     },
     creationDate: {
         type: Date,
