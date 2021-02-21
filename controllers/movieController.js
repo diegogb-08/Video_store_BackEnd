@@ -26,14 +26,14 @@ class Film {
        return movie.create(film)
     };
 
-    //PUT - Update a register already exists
+    //PUT - Update a Film already exists
 
     async updateFilm(id, film){
         const idFound = movie.findOne({id: id})
         return idFound.update(film)
     };
 
-    //DELETE - Delete a TVShow with specified ID
+    //DELETE - Delete a Film with specified ID
 
     async deleteFilm({id: id}) {
         const idFound = movie.findOne({id: id})

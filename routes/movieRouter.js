@@ -39,7 +39,7 @@ routerFilms.post('/add-movie',async (req, res) => {
 routerFilms.put('/update-movie:id',async (req,res) => {
     try{
         const id = req.params.id;
-        res.json(await cmovieController.updateFilm(id,new movieSchema(req.body)));
+        res.json(await movieController.updateFilm(id,new movieSchema(req.body)));
     } catch( error ){
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
