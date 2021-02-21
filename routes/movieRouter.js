@@ -10,12 +10,13 @@ routerFilms.get('/movies', async (req, res) => {
         return res.sendStatus(500).json({
            message: 'Internal Server Error'
         });
+        console.log(err.message)
     }
 });
 
 routerFilms.get('/movie:id',async (req, res) => {
     try {
-        res.json(await movieController.findById())
+        res.json(await movieController.findOne(req))
     }catch (err) {
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
