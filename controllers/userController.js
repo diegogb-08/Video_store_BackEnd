@@ -28,7 +28,7 @@ class Customer {
     //PUT - Update a User Profil already existing
 
     async updateProfile(id,user){
-        return User.findByIdAndUpdate(id,user)
+        return User.findByIdAndUpdate(id,user,{new: true})
     };
 
     //DELETE - Delete a User with specified ID

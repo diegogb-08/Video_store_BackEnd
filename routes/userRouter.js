@@ -47,7 +47,8 @@ router.post('/signin-user',async (req, res) => {
 router.put('/update-user/:id', async (req,res) => {
     try{
         const id = req.params.id;
-        res.json(await userController.updateProfile(id,req.body));
+        const userUpdated = await userController.updateProfile(id,req.body)
+        res.json(userUpdated).status(200);
     } catch( error ){
         return res.sendStatus(500).json({
             message: 'Internal Server Error'

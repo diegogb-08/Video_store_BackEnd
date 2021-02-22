@@ -35,7 +35,7 @@ class Film {
     //PUT - Update a Film already exists
 
     async updateFilm(id,film){
-        return Movie.findByIdAndUpdate(id,film)
+        return Movie.findByIdAndUpdate(id,film,{new: true})
     };
 
     //DELETE - Delete a Film with specified ID
