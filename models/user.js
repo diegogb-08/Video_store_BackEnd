@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const userSchema = {
     first_name: { 
         type: String,
-        required: true,
-        deafault: 'Name'
+        required: true
     },
     last_name: { 
         type: String,
-        required: true,
-        deafault: 'Last Name'
+        required: true
     },
     image: {
         type: String,

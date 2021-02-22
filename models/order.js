@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const User = require('./user');
+const Movie = require('./movie');
 
 
 const orderSchema = {
@@ -6,12 +8,12 @@ const orderSchema = {
         type: ObjectId 
     },  
     filmId: { 
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Movie'
     },
     userId: { 
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     creationDate: {
         type: Date,
@@ -23,5 +25,5 @@ const orderSchema = {
     }
 }
 
-const Order = mongoose.model('order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

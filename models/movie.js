@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const movieSchema = {
     title: { 
         type: String,
-        required: true,
-        deafault: 'Film'
+        required: true
     },
     id: { 
         type: Number,
