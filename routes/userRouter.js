@@ -2,6 +2,9 @@ const router = require('express').Router();
 const userController = require('../controllers/userController')
 
 // API routes
+
+//GET - Return all Users in the DB
+
 router.get('/users', async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
@@ -11,6 +14,8 @@ router.get('/users', async (req, res) => {
         });
     }
 });
+
+//GET - Return a User with specified ID
 
 router.get('/users/:id',async (req, res) => {
     try {
@@ -23,9 +28,11 @@ router.get('/users/:id',async (req, res) => {
     }
 });
 
-router.post('/create-user',async (req, res) => {
+ //POST - SignIn a new User in the DB
+
+router.post('/signin-user',async (req, res) => {
     try{
-        const id = await userController.createUser(req.body);
+        const id = await userController.signInUser(req.body);
         const status = 'success';
         res.json({status,id});
     } catch( error ){
@@ -34,6 +41,8 @@ router.post('/create-user',async (req, res) => {
         });
     }
 })
+
+  //PUT - Update a User Profil already existing
 
 router.put('/update-user/:id', async (req,res) => {
     try{
@@ -45,6 +54,8 @@ router.put('/update-user/:id', async (req,res) => {
         });
     }
 });
+
+//DELETE - Delete a User with specified ID
 
 router.delete('/remove-user/:id', async (req, res) => {
     try{

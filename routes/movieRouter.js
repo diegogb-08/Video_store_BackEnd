@@ -27,10 +27,11 @@ router.get('/movies/:id',async (req, res) => {
 });
 
 //GET - Return a Film with specified Title
-router.get('/movies/:id',async (req, res) => {
+router.get('/movies?filter={query}',async (req, res) => {
     try {
-        const id = req.params.id;
-        res.json(await movieController.findById(id))
+        const title = await movieController.findByTitle(req.body);
+        res.json(title)
+        console.log(res)
     }catch (err) {
         return res.sendStatus(500).json({
             message: 'Internal Server Error'

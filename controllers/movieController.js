@@ -21,8 +21,8 @@ class Film {
 
      //GET - Return a Film with specified Title
 
-     async findByTitle({title}) {
-        return Movie.findOne({title});
+     async findByTitle({name}) {
+        return Movie.findOne({name});
     };
 
 

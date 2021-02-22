@@ -19,9 +19,9 @@ class Customer {
         return User.findById(id);
     };
 
-    //POST - Create a new User in the DB
+    //POST - SignIn a new User in the DB
 
-    async createUser(profile){
+    async signInUser(profile){
        return User.create(profile)
     };
 
