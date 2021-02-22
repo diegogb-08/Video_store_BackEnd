@@ -1,6 +1,5 @@
 const routerFilms = require('express').Router();
 const movieController = require('../controllers/movieController')
-const movieSchema = require('../models/movie')
 
 // API routes
 routerFilms.get('/allmovies', async (req, res) => {
@@ -15,7 +14,8 @@ routerFilms.get('/allmovies', async (req, res) => {
 
 routerFilms.get('/movie/:id',async (req, res) => {
     try {
-        res.json(await movieController.findById(req))
+        const id = req.params.id;
+        res.json(await movieController.findById(id))
     }catch (err) {
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
@@ -25,7 +25,7 @@ routerFilms.get('/movie/:id',async (req, res) => {
 
 routerFilms.post('/addmovie',async (req, res) => {
     try{
-        const id = await movieController.addFilm(new movieSchema(req.body));
+        const id = await movieController.addFilm(req.body);
         const status = 'success';
         res.json({status,id});
     } catch( error ){
@@ -38,7 +38,7 @@ routerFilms.post('/addmovie',async (req, res) => {
 routerFilms.put('/update-movie/:id', async (req,res) => {
     try{
         const id = req.params.id;
-        res.json(await movieController.updateFilm(id,new movieSchema(req.body.id)));
+        res.json(await movieController.updateFilm(id,req.body));
     } catch( error ){
         return res.sendStatus(500).json({
             message: 'Internal Server Error'
