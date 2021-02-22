@@ -4,7 +4,7 @@ const movieSchema = {
     title: { 
         type: String,
         required: true,
-        deafault: 'film'
+        deafault: 'Film'
     },
     id: { 
         type: Number,

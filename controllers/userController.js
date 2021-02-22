@@ -1,0 +1,42 @@
+const User = require('../models/user');
+
+
+class Customer {
+
+    constructor(){
+
+    }
+
+    //GET - Return all Users in the DB
+
+    async findAllUsers(users){
+        return User.find(users);
+    };
+
+    //GET - Return a User with specified ID
+
+    async findById(id) {
+        return User.findById(id);
+    };
+
+    //POST - Create a new User in the DB
+
+    async createUser(profile){
+       return User.create(profile)
+    };
+
+    //PUT - Update a User Profil already existing
+
+    async updateProfile(id,user){
+        return User.findByIdAndUpdate(id,user)
+    };
+
+    //DELETE - Delete a User with specified ID
+
+    async deleteUser(id) {
+        return User.findByIdAndRemove(id)
+    };
+};
+
+let userController = new Customer();
+module.exports = userController;

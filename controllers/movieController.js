@@ -19,6 +19,13 @@ class Film {
         return Movie.findById(id);
     };
 
+     //GET - Return a Film with specified Title
+
+     async findByTitle({title}) {
+        return Movie.findOne({title});
+    };
+
+
     //POST - Insert a new Film in the DB
 
     async addFilm(film){

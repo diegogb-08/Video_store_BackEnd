@@ -1,2 +1,3 @@
 node_modules
-MOCK_DATA.json
+MOCK_MOVIE_DATA.json
+MOCK_USER_DATA.json

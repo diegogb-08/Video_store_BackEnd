@@ -1,63 +1,45 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
 
-const userSchema = new Schema({
-    id: { 
-        type: ObjectId 
-    },
-    name: { 
+const userSchema = {
+    first_name: { 
         type: String,
         required: true,
-        deafault: 'Pepe'
+        deafault: 'Name'
+    },
+    last_name: { 
+        type: String,
+        required: true,
+        deafault: 'Last Name'
     },
     image: {
         type: String,
     },
     creationDate: {
         type: Date,
-        default: new Date,
-        required: true
+        default: new Date
     },
-    birthDate: { 
-        type: Number,
-        required: true,
+    birth_date: { 
+        type: String,
     },
     email: {
-        type: String,
-        required: true
+        type: String
     },
-    phoneNumber: { 
-        type: Number,
-        required: true
-    },
-    country: { 
-        type: String,
-        required: true
+    phone_number: { 
+        type: String
     },
     address: { 
-        type: String,
-        required: true
+        type: String
     },
     personalId: { 
-        type: String,
-        required: true
+        type: String
     },
     genre: { 
-        type: String, 
-        enum:
-        {
-            "Male": 0,
-            "Female": 1,
-            "Other": 2,
-        }
+        type: String
     },
-    paymentMethod: {
-        type: Number, 
-        enum: [visa, masterCard, paypal, bizum, amex, cash, bankTransfer],
-        required: true
+    payment_method: {
+        type: String
     }
-});
+};
 
-const user = mongoose.model('user', userSchema);
-module.exports = user;
+const User = mongoose.model('User', userSchema);
+module.exports = User;

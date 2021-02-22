@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
 
-const orderSchema = new Schema({
+
+const orderSchema = {
     id: { 
         type: ObjectId 
     },  
@@ -18,12 +17,11 @@ const orderSchema = new Schema({
         type: Date,
         default: new Date
     },
-    paymentMethod: {
-        type: Number, 
-        enum: [visa, masterCard, paypal, bizum, amex, cash, bankTransfer],
-        required: true
+    payment_method: {
+        type: String,
+        default: true
     }
-})
+}
 
-const order = mongoose.model('order', orderSchema);
-module.exports = order;
+const Order = mongoose.model('order', orderSchema);
+module.exports = Order;
