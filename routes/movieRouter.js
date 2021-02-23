@@ -7,9 +7,23 @@ const movieController = require('../controllers/movieController')
 router.get('/movies', async (req, res) => {
     try {
         res.json(await movieController.findAllFilms())
+        console.log(res)
     }catch (err) {
         return res.sendStatus(500).json({
            message: 'Internal Server Error'
+        });
+    }
+});
+
+
+//GET - Return a Film with specified Title
+router.get('/movies/search',async (req, res) => {
+    try {
+        const title = await movieController.findByTitle(req.query);
+        res.json(title)
+    }catch (err) {
+        return res.sendStatus(500).json({
+            message: 'Internal Server Error'
         });
     }
 });
@@ -26,18 +40,6 @@ router.get('/movies/:id',async (req, res) => {
     }
 });
 
-//GET - Return a Film with specified Title
-router.get('/movies?filter={query}',async (req, res) => {
-    try {
-        const title = await movieController.findByTitle(req.body);
-        res.json(title)
-        console.log(res)
-    }catch (err) {
-        return res.sendStatus(500).json({
-            message: 'Internal Server Error'
-        });
-    }
-});
 
 //POST - Insert a new Film in the DB
 router.post('/add-movies',async (req, res) => {

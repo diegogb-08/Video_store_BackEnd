@@ -9,8 +9,8 @@ class Film {
 
     //GET - Return all Films in the DB
 
-    async findAllFilms(filmCollection){
-        return Movie.find(filmCollection);
+    async findAllFilms(){
+        return Movie.find();
     };
 
     //GET - Return a Film with specified ID
@@ -21,8 +21,12 @@ class Film {
 
      //GET - Return a Film with specified Title
 
-     async findByTitle({name}) {
-        return Movie.findOne({name});
+     async findByTitle({query}) {
+        console.log(query)
+        if(query == undefined)
+        return []
+        else
+        return Movie.find({"title": query});
     };
 
 
