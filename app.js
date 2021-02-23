@@ -1,15 +1,15 @@
 const express = require('express');
-const app = express();
+const router = require('./router');
 const db = require('./db');
+const app = express();
 const port = 3000;
-const routerFilms = require('./routes/movieRouter')
-const routerUser = require('./routes/userRouter')
+
 
 // Middleware
 app.use(express.json())
+app.use(router);
 
-app.use(routerFilms);
-app.use(routerUser);
+
 
 // Start server
 db

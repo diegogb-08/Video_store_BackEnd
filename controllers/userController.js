@@ -19,6 +19,17 @@ class Customer {
         return User.findById(id);
     };
 
+     //GET - Return a Film with specified Title
+
+     async findByUserName({query}) {
+        if(query == undefined)
+        return []
+        else
+        return User.find({"user_name": query});
+    };
+
+
+
     //POST - SignIn a new User in the DB
 
     async signInUser(profile){

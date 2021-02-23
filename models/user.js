@@ -1,16 +1,24 @@
 const mongoose = require('mongoose');
 
 const userSchema = {
-    first_name: { 
+    full_name: { 
         type: String,
         required: true
     },
-    last_name: { 
+    user_name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    image: {
+    email: {
         type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true,
+        unique: true
     },
     creationDate: {
         type: Date,
@@ -19,19 +27,10 @@ const userSchema = {
     birth_date: { 
         type: String,
     },
-    email: {
-        type: String
-    },
     phone_number: { 
         type: String
     },
     address: { 
-        type: String
-    },
-    personalId: { 
-        type: String
-    },
-    genre: { 
         type: String
     },
     payment_method: {
