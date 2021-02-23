@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 
 
@@ -32,8 +33,9 @@ class Customer {
 
     //POST - SignIn a new User in the DB
 
-    async signInUser(profile){
-       return User.create(profile)
+    async signInUser(user){
+        user.password = await bcrypt.hash(user.password, 10)
+       return User.create(user)
     };
 
     //PUT - Update a User Profil already existing

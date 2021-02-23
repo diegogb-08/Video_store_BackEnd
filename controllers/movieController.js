@@ -22,11 +22,10 @@ class Film {
      //GET - Return a Film with specified Title
 
      async findByTitle({query}) {
-        console.log(query)
         if(query == undefined)
-        return []
+            return []
         else
-        return Movie.find({"title": query});
+            return Movie.find({"title": query});
     };
 
 

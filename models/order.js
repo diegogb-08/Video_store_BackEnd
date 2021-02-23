@@ -1,28 +1,37 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const User = require('./user');
-const Movie = require('./movie');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
+const date = new Date()
 
 const orderSchema = {
-    id: { 
-        type: ObjectId 
-    },  
-    filmId: [{ 
-        type: Schema.Types.ObjectId,
-        ref: 'Movie'
-    }],
-    userId: [{ 
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    creationDate: {
+    film_id: { 
+        type: [ObjectId],
+        ref: 'Movie',
+        required: true
+    },
+    user_id: { 
+        type: [ObjectId],
+        ref: 'User',
+        required: true
+    },
+    rental_date: {
         type: Date,
         default: new Date
     },
+    return_date: {
+        type: Date,
+        default: new Date(+new Date() + 7*24*60*60*1000)
+    },
     payment_method: {
+        type: String
+    },
+    total_to_pay: {
         type: String,
-        default: true
+        default: "2.50€"
+    },
+    paid: {
+        type: Boolean,
+        default: false
     }
 }
 
