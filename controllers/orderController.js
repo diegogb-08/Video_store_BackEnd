@@ -13,9 +13,15 @@ class Rental {
         return Order.find();
     };
 
+     //GET - Return a Film with specified ID
+
+     async findById(id) {
+        return Order.findById(id);
+    };
+
     //POST - Create a new Order 
 
-    async createOrder(order){
+    async rentMovie(order){
         return Order.create(order)
     };
 
