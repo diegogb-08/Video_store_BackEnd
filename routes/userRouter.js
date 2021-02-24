@@ -63,7 +63,7 @@ router.post('/login',async (req, res) => {
         const jwt = await userController.login(email,password);
         res.json({jwt})
     } catch (error) {
-        return res.status(500).json({
+        return res.status(401).json({
             message: error.message
         });
     }

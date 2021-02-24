@@ -1,12 +1,8 @@
 const router = require('express').Router();
 const orderController = require('../controllers/orderController');
-// const Movie = require('../models/movie');
-// const User = require('../models/user');
-// const Order = require('../models/order');
-
 
 //POST - Create a new Order in the DB
-router.post('/',async (req, res) => {
+router.post('/', async (req, res) => {
     try{
         const order = await orderController.rentMovie(req.body.user_id,req.body.film_id);
         const status = 'success';

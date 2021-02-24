@@ -22,22 +22,15 @@ class Rental {
 
     //POST - Create a new Order 
 
-    // async rentMovie(order){
-    //     return Order.create(order)
-    // };
-
-
     async rentMovie(user_id,film_id) {
         const userEntity = await User.findById(user_id);
         const movieEntity = await Movie.findById(film_id)
         if(!userEntity || !movieEntity){
-            throw new Error('ooops')
+            throw new Error('Movie or User not found')
         }
         return await Order.create({
             user_id: user_id,
             film_id: film_id
-            // dateIni: range[0],
-            // dateEnd:  range[1]
         });
     };
 
@@ -54,7 +47,6 @@ class Rental {
     };
 
 }
-
 
 
 let orderController = new Rental();
