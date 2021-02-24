@@ -5,12 +5,12 @@ const date = new Date()
 
 const orderSchema = {
     film_id: { 
-        type: [ObjectId],
+        type: ObjectId,
         ref: 'Movie',
         required: true
     },
     user_id: { 
-        type: [ObjectId],
+        type: ObjectId,
         ref: 'User',
         required: true
     },
