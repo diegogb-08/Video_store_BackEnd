@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const userController = require('../controllers/userController')
+const userController = require('../controllers/userController');
+const jwt = require('jsonwebtoken');
 
 // API routes
 
@@ -42,11 +43,11 @@ router.get('/:id',async (req, res) => {
     }
 });
 
- //POST - SignIn a new User in the DB
+ //POST - SignIn a new User in the DB & Login
 
 router.post('/',async (req, res) => {
     try{
-        const id = await userController.signInUser(req.body);
+        const id = await userController.signUpUser(req.body);
         const status = 'success';
         res.json({status,id});
     } catch( error ){
@@ -55,6 +56,18 @@ router.post('/',async (req, res) => {
         });
     }
 })
+
+router.post('/login',async (req, res) => {   
+    try{
+        const {email,password} = req.body;
+        const jwt = await userController.login(email,password);
+        res.json({jwt})
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+});
 
   //PUT - Update a User Profil already existing
 

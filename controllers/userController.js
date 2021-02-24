@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
-
+const jwt = require('jsonwebtoken')
+const secret = process.env.JWT_SECRET || 'unapalabrasecreta';
 
 class Customer {
 
@@ -29,14 +30,29 @@ class Customer {
         return User.find({"user_name": query});
     };
 
+    //POST - SignUpn a new User in the DB & Login
 
-
-    //POST - SignIn a new User in the DB
-
-    async signInUser(user){
+    async signUpUser(user){
         user.password = await bcrypt.hash(user.password, 10)
        return User.create(user)
     };
+
+    async login(email,password){
+        const user =  await User.findOne({email})
+        if(!user){
+            throw new Error('Email does not exist')
+        }
+        if (!await bcrypt.compare(password,user.password)){
+            throw new Error('Password incorrect')
+        }
+
+        const payload = {
+            userId: user.id,
+            tokenCreationDate: new Date,
+        }
+
+        return jwt.sign(payload, secret);
+    }
 
     //PUT - Update a User Profil already existing
 
