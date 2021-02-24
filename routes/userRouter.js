@@ -5,7 +5,7 @@ const userController = require('../controllers/userController')
 
 //GET - Return all Users in the DB
 
-router.get('/list', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.json(await userController.findAllUsers())
     }catch (err) {
@@ -44,7 +44,7 @@ router.get('/:id',async (req, res) => {
 
  //POST - SignIn a new User in the DB
 
-router.post('/signin',async (req, res) => {
+router.post('/',async (req, res) => {
     try{
         const id = await userController.signInUser(req.body);
         const status = 'success';
@@ -58,7 +58,7 @@ router.post('/signin',async (req, res) => {
 
   //PUT - Update a User Profil already existing
 
-router.put('/update/:id', async (req,res) => {
+router.put('/:id', async (req,res) => {
     try{
         const id = req.params.id;
         const userUpdated = await userController.updateProfile(id,req.body)
@@ -72,7 +72,7 @@ router.put('/update/:id', async (req,res) => {
 
 //DELETE - Delete a User with specified ID
 
-router.delete('/remove/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try{
         const id = req.params.id;
         const status = 'deleted'

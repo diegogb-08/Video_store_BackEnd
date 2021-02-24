@@ -4,7 +4,7 @@ const movieController = require('../controllers/movieController')
 // API routes
 
 //GET - Return all Films in the DB
-router.get('/list', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.json(await movieController.findAllFilms())
     }catch (err) {
@@ -41,7 +41,7 @@ router.get('/:id',async (req, res) => {
 
 
 //POST - Insert a new Film in the DB
-router.post('/add',async (req, res) => {
+router.post('/',async (req, res) => {
     try{
         const id = await movieController.addFilm(req.body);
         const status = 'success';
@@ -54,7 +54,7 @@ router.post('/add',async (req, res) => {
 })
 
 //PUT - Update a Film already exists
-router.put('/update/:id', async (req,res) => {
+router.put('/:id', async (req,res) => {
     try{
         const id = req.params.id;
         res.json(await movieController.updateFilm(id,req.body));
@@ -66,7 +66,7 @@ router.put('/update/:id', async (req,res) => {
 });
 
 //DELETE - Delete a Film with specified ID
-router.delete('/remove/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try{
         const id = req.params.id;
         const status = 'deleted'
