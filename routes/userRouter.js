@@ -20,14 +20,28 @@ router.get('/', async (req, res) => {
 //GET - Return a User with specified User_name ?query=
 router.get('/search',async (req, res) => {
     try {
-        const userName = await userController.findByUserName(req.query);
-        res.json(userName)
+        const user = await userController.findByUserName(req.query);
+        console.log('UUUUSSSSEEEEEERRRRRRR', user)
+        res.json(user)
     }catch (err) {
         return res.status(500).json({
             message: err.message
         });
     }
 });
+
+//GET - Return a User with specified User_name ?query=
+router.get('/email',async (req, res) => {
+    try {
+        const user = await userController.findUserByEmail(req.query);
+        res.json(user)
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 
 
 //GET - Return a User with specified ID

@@ -21,13 +21,23 @@ class Customer {
         return User.findById(id);
     };
 
-     //GET - Return a Film with specified Title
+     //GET - Return a User with specified User_name
 
      async findByUserName({query}) {
+         console.log('QQQQQUUUUUEEEEEERRRRRRYYYYYYYY', query)
         if(query == undefined)
         return []
         else
-        return User.find({"user_name": query});
+        return User.findOne({"user_name": query});
+    };
+
+    //GET - Return a user with specified email
+
+     async findUserByEmail({query}) {
+        if(query == undefined)
+        return []
+        else
+        return User.findOne({"email": query});
     };
 
     //POST - SignUp a new User in the DB & Login
