@@ -47,10 +47,9 @@ router.get('/:id',async (req, res) => {
 
 router.post('/',async (req, res) => {
     try{
-        const id = await userController.signUpUser(req.body);
-        const status = 'success';
-        res.json({status,id});
-    } catch( error ){
+        const user = await userController.signUpUser(req.body);
+        res.json(user);
+    } catch( err ){
         return res.status(500).json({
             message: err.message
         });
@@ -61,10 +60,12 @@ router.post('/login',async (req, res) => {
     try{
         const {email,password} = req.body;
         const jwt = await userController.login(email,password);
-        res.json({jwt})
-    } catch (error) {
+        const token = jwt.token
+        const user = jwt.user
+        res.json({token,user})
+    } catch (err) {
         return res.status(401).json({
-            message: error.message
+            message: err.message
         });
     }
 });
@@ -76,7 +77,7 @@ router.put('/:id', async (req,res) => {
         const id = req.params.id;
         const userUpdated = await userController.updateProfile(id,req.body)
         res.json(userUpdated).status(200);
-    } catch( error ){
+    } catch( err ){
         return res.status(500).json({
             message: err.message
         });
@@ -91,7 +92,7 @@ router.delete('/:id', async (req, res) => {
         const status = 'deleted'
         await userController.deleteUser(id);
         res.json({status,id});
-    } catch( error ) {
+    } catch( err ) {
         return res.status(500).json({
             message: err.message
      });   

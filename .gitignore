@@ -1,3 +1,4 @@
 node_modules
 MOCK_MOVIE_DATA.json
 MOCK_USER_DATA.json
+data/

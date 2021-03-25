@@ -26,10 +26,10 @@ const userSchema = new Schema({
         default: new Date
     },
     birth_date: { 
-        type: String,
+        type: Date,
     },
     phone_number: { 
-        type: String
+        type: Number,
     },
     address: { 
         type: String

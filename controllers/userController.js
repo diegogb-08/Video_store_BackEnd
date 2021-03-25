@@ -30,7 +30,7 @@ class Customer {
         return User.find({"user_name": query});
     };
 
-    //POST - SignUpn a new User in the DB & Login
+    //POST - SignUp a new User in the DB & Login
 
     async signUpUser(user){
         user.password = await bcrypt.hash(user.password, 10)
@@ -50,8 +50,8 @@ class Customer {
             userId: user.id,
             tokenCreationDate: new Date,
         }
-
-        return jwt.sign(payload, secret);
+        const token = jwt.sign(payload, secret)
+        return ({token, user});
     }
 
     //PUT - Update a User Profil already existing

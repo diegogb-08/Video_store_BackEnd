@@ -1,3 +1,6 @@
+// comentarios siempre aqui
+
+
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -20,6 +23,7 @@ const orderSchema = {
     },
     return_date: {
         type: Date,
+        // comentario
         default: new Date(+new Date() + 7*24*60*60*1000)
     },
     payment_method: {

@@ -1,12 +1,13 @@
+//version, nombre, 
+
+//explicacion del model
+
 const mongoose = require('mongoose');
 
 const movieSchema = {
     title: { 
         type: String,
         required: true
-    },
-    id: { 
-        type: Number,
     },
     creationDate: {
         type: Date,
