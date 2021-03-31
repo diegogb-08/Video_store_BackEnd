@@ -6,9 +6,7 @@ const auth = require('../middlewares/auth');
 //POST - Create a new Order in the DB
 router.post('/user/:id', auth, async (req, res) => {
     try{
-        const data = await orderController.rentMovie(req.body, req.params.id);
-        const status = 'success';
-        res.json({status,data});
+        res.json(await orderController.rentMovie(req.body, req.params.id));
     } catch( error ){
         return res.status(404).json({
             message: "User not found"
