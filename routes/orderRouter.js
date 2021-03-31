@@ -1,15 +1,17 @@
 const router = require('express').Router();
 const orderController = require('../controllers/orderController');
+const auth = require('../middlewares/auth');
+
 
 //POST - Create a new Order in the DB
-router.post('/', async (req, res) => {
+router.post('/user/:id', auth, async (req, res) => {
     try{
-        const order = await orderController.rentMovie(req.body.user_id,req.body.film_id);
+        const data = await orderController.rentMovie(req.body, req.params.id);
         const status = 'success';
-        res.json({status,order});
+        res.json({status,data});
     } catch( error ){
         return res.status(404).json({
-            message: "Movie or User not found"
+            message: "User not found"
         });
     }
 });

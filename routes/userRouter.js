@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
 const jwt = require('jsonwebtoken');
+const auth = require('../middlewares/auth');
 
 // API routes
 
@@ -70,7 +71,7 @@ router.post('/',async (req, res) => {
     }
 })
 
-router.post('/login',async (req, res) => {   
+router.post('/login',async (req, res) => {
     try{
         const {email,password} = req.body;
         const jwt = await userController.login(email,password);
@@ -86,7 +87,7 @@ router.post('/login',async (req, res) => {
 
   //PUT - Update a User Profil already existing
 
-router.put('/:id', async (req,res) => {
+router.put('/:id', auth, async (req,res) => {
     try{
         const id = req.params.id;
         const userUpdated = await userController.updateProfile(id,req.body)
