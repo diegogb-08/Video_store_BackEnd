@@ -14,6 +14,12 @@ class Rental {
         return Order.find();
     };
 
+    //GET - Return all Rentals in the DB
+
+    async findAllOrdersByUserId(userId){
+        return Order.find({user_id : userId});
+    };
+
      //GET - Return a Film with specified ID
 
      async findById(id) {
@@ -29,6 +35,7 @@ class Rental {
         }
         return await Order.create({
             user_id: id,
+            user_email : userEntity.email,
             rental: body.rental
         });
     };

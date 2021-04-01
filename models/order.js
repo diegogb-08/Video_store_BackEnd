@@ -23,6 +23,10 @@ const orderSchema = {
         // comentario
         default: new Date(+new Date() + 7*24*60*60*1000)
     },
+    user_email: {
+        type: String,
+        ref: 'User'
+    }
 
 
 

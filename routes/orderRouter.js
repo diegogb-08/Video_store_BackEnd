@@ -25,6 +25,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+//GET - Return all Orders from user id
+router.get('/user/:id',auth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        res.json(await orderController.findAllOrdersByUserId(id))
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
+
 //GET - Return a Order with specified ID
 router.get('/:id',async (req, res) => {
     try {
