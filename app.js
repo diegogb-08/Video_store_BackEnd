@@ -20,7 +20,3 @@ db
 })
 .catch((err) => console.log(err.message))
 
-
-app.get('/', (req, res) => {
-    res.send('ESTAMOS DENTRO');
-});
