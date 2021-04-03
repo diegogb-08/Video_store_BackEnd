@@ -16,7 +16,7 @@ app.use(router);
 // Start server
 db
 .then(() => {
-    app.listen(port, () => console.log(`Node server running on http://localhost:${port}`));
+    app.listen(process.env.PORT || port, () => console.log(`Node server running on http://localhost:${port}`));
 })
 .catch((err) => console.log(err.message))
 
