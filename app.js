@@ -20,3 +20,7 @@ db
 })
 .catch((err) => console.log(err.message))
 
+
+app.get('/', (req, res) => {
+    res.send('8====D');
+});
